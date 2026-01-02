@@ -2,10 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DragonVileMC | BedWars & PvP Server</title>
+  <title>DragonVileMC | BedWars & PvP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Poppins Font -->
+  <!-- Primary Meta -->
+  <meta name="title" content="DragonVileMC | BedWars & PvP Server">
+  <meta name="description" content="DragonVileMC is a competitive Minecraft BedWars & PvP server for Java & Bedrock players. Join now and fight for victory.">
+
+  <!-- Open Graph / Discord -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dragonvile.gt.tc/">
+  <meta property="og:title" content="DragonVileMC | BedWars & PvP Server">
+  <meta property="og:description" content="Competitive BedWars & PvP for Java & Bedrock players. Join DragonVileMC today!">
+  <meta property="og:image" content="https://dragonvile.gt.tc/banner.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DragonVileMC | BedWars & PvP Server">
+  <meta name="twitter:description" content="Competitive BedWars & PvP for Java & Bedrock players.">
+  <meta name="twitter:image" content="https://dragonvile.gt.tc/banner.png">
+
+  <!-- Fonts -->
   <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
 
   <!-- Font Awesome -->
@@ -20,64 +37,76 @@
     }
 
     body {
-      background: #0f0f14;
+      background: radial-gradient(circle at top, #1b0038, #0a0a12);
       color: #ffffff;
       line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(135deg, #6a00ff, #9b4dff);
       text-align: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
     }
 
     header img {
-      max-width: 320px;
-      margin-bottom: 20px;
+      max-width: 360px;
+      margin-bottom: 25px;
     }
 
     header h1 {
       font-size: 3rem;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     header p {
-      font-size: 1.1rem;
+      max-width: 720px;
+      margin: auto;
       opacity: 0.9;
     }
 
     .ip-box {
-      margin-top: 25px;
-      background: rgba(0,0,0,0.3);
+      margin-top: 30px;
       display: inline-block;
-      padding: 12px 22px;
-      border-radius: 8px;
+      background: linear-gradient(135deg, #7a2cff, #b084ff);
+      padding: 15px 30px;
+      border-radius: 16px;
+      font-weight: 600;
       cursor: pointer;
+      box-shadow: 0 12px 35px rgba(122,44,255,0.4);
       transition: 0.3s;
     }
 
     .ip-box:hover {
-      background: rgba(0,0,0,0.45);
+      transform: scale(1.05);
     }
 
     section {
-      padding: 60px 20px;
-      max-width: 1100px;
+      max-width: 1150px;
       margin: auto;
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.4rem;
     }
 
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
     }
 
     .card {
-      background: #1b1b25;
-      padding: 30px;
-      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      padding: 34px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(6px);
       transition: 0.3s;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
     .card:hover {
@@ -85,13 +114,26 @@
     }
 
     .card i {
-      font-size: 2.2rem;
-      color: #9b4dff;
+      font-size: 2.4rem;
+      color: #b084ff;
       margin-bottom: 15px;
     }
 
-    .card h3 {
+    .faq {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.06);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .faq-item h4 {
       margin-bottom: 10px;
+      font-size: 1.2rem;
     }
 
     .links {
@@ -100,94 +142,128 @@
     }
 
     .links a {
-      margin: 0 15px;
-      font-size: 1.8rem;
+      margin: 0 18px;
+      font-size: 1.9rem;
       color: #ffffff;
       transition: 0.3s;
     }
 
     .links a:hover {
-      color: #9b4dff;
+      color: #b084ff;
+    }
+
+    .changelog {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     footer {
-      background: #0a0a0f;
       text-align: center;
-      padding: 25px 10px;
-      font-size: 0.9rem;
+      padding: 30px 15px;
+      background: #07070d;
       opacity: 0.85;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="https://dragonvile.gt.tc/banner.png" alt="DragonVileMC Banner">
-    <h1>Welcome to DragonVileMC</h1>
-    <p>A competitive Minecraft <b>BedWars & PvP</b> server for both Java & Bedrock players.</p>
+<header>
+  <img src="https://dragonvile.gt.tc/banner.png" alt="DragonVileMC Banner">
+  <h1>DragonVileMC</h1>
+  <p>A competitive Minecraft <b>BedWars & PvP</b> server for both Java & Bedrock players.</p>
 
-    <div class="ip-box" onclick="copyIP()">
-      <strong>Server IP:</strong> play.dragonvile.gt.tc <br>
-      <small>(Click to copy)</small>
-    </div>
-  </header>
+  <div class="ip-box" onclick="copyIP()">
+    IP: 170.64.251.196:9999 <br>
+    <small>(Click to copy)</small>
+  </div>
+</header>
 
-  <section>
-    <div class="features">
-      <div class="card">
-        <i class="fa-solid fa-bed"></i>
-        <h3>BedWars</h3>
-        <p>Defend your bed, rush enemies, and dominate intense BedWars matches with custom maps.</p>
-      </div>
+<section>
+  <div class="section-title">
+    <h2>Why DragonVileMC?</h2>
+  </div>
 
-      <div class="card">
-        <i class="fa-solid fa-swords"></i>
-        <h3>PvP Arena</h3>
-        <p>Show your skills in fast-paced PvP battles with balanced kits and competitive gameplay.</p>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-trophy"></i>
-        <h3>Events & Rewards</h3>
-        <p>Join server-wide events, tournaments, and earn exclusive in-game rewards.</p>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-users"></i>
-        <h3>Active Community</h3>
-        <p>Play with friendly players, team up with friends, and be part of DragonVileMC.</p>
-      </div>
+  <div class="features">
+    <div class="card">
+      <i class="fa-solid fa-bed"></i>
+      <h3>BedWars</h3>
+      <p>Fast-paced BedWars with balanced gameplay, custom maps, and competitive matches.</p>
     </div>
 
-    <div class="links">
-      <a href="https://discord.gg/VJAKqwhwK6" target="_blank" title="Discord">
-        <i class="fab fa-discord"></i>
-      </a>
-      <a href="https://youtube.com/@dragonvile" target="_blank" title="YouTube">
-        <i class="fab fa-youtube"></i>
-      </a>
-      <a href="https://dragonvile.gt.tc/" target="_blank" title="Old Website">
-        <i class="fa-solid fa-globe"></i>
-      </a>
+    <div class="card">
+      <i class="fa-solid fa-swords"></i>
+      <h3>PvP Combat</h3>
+      <p>Skill-based PvP arenas designed for fair fights and intense action.</p>
     </div>
-  </section>
 
-  <footer>
-    2025–2026 © DragonVileMC · Not affiliated with Mojang Studios.
-  </footer>
+    <div class="card">
+      <i class="fa-solid fa-trophy"></i>
+      <h3>Events & Rewards</h3>
+      <p>Frequent events, tournaments, and exclusive in-game rewards.</p>
+    </div>
 
-  <script>
-    function copyIP() {
-      navigator.clipboard.writeText("hey.server.under.construction");
-      alert("Server IP copied to clipboard!");
-    }
-  </script>
+    <div class="card">
+      <i class="fa-solid fa-users"></i>
+      <h3>Active Community</h3>
+      <p>A growing community with friendly players and active staff.</p>
+    </div>
+  </div>
+
+  <div class="links">
+    <a href="https://discord.gg/VJAKqwhwK6" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://youtube.com/@dragonvile" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://dragonvile.gt.tc/" target="_blank"><i class="fa-solid fa-globe"></i></a>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>FAQ</h2>
+  </div>
+
+  <div class="faq">
+    <div class="faq-item">
+      <h4>Which version is DragonVile supported on?</h4>
+      <p>
+        We support versions starting from <b>1.8.9</b> to the <b>latest version</b>.
+        However, some versions may have minor bugs.  
+        The server is currently running on <b>version 1.21.8</b>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>Website Changelog</h2>
+  </div>
+
+  <div class="changelog">
+    <ul>
+      <li><b>v1.1</b> – Modern UI redesign</li>
+      <li>Added OpenGraph & Discord embed support</li>
+      <li>Updated server IP</li>
+      <li>Added FAQ section</li>
+      <li>Improved mobile responsiveness</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  © 2025–2026 DragonVileMC · Not affiliated with Mojang Studios.
+</footer>
+
+<script>
+  function copyIP() {
+    navigator.clipboard.writeText("170.64.251.196:9999");
+    alert("Server IP copied!");
+  }
+</script>
 
 </body>
 </html>
