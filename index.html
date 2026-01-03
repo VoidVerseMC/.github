@@ -7,138 +7,159 @@
 
 <!-- Primary Meta -->
 <meta name="title" content="DragonVileMC | BedWars & PvP Server">
-<meta name="description" content="DragonVileMC: A competitive Minecraft BedWars & PvP server with live status, community events, and more.">
+<meta name="description" content="DragonVileMC: Competitive BedWars & PvP server with live status.">
 
 <!-- Open Graph / Discord -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dv.now.ct.ws">
 <meta property="og:title" content="DragonVileMC | BedWars & PvP Server">
-<meta property="og:description" content="Check live server status, connect instantly and join the fun!">
+<meta property="og:description" content="Check live server status and join instantly.">
 <meta property="og:image" content="https://dragonvile.gt.tc/banner.png">
 
-<!-- Twitter/X -->
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DragonVileMC | BedWars & PvP Server">
-<meta name="twitter:description" content="Check live server status, connect instantly and join the fun!">
 <meta name="twitter:image" content="https://dragonvile.gt.tc/banner.png">
 
-<!-- Fonts -->
 <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/minecraft-3" rel="stylesheet">
-
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:radial-gradient(circle at top,#1b0038,#0a0a12);color:#fff;line-height:1.6;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:radial-gradient(circle at top,#1b0038,#0a0a12);color:#fff}
+nav{position:sticky;top:0;background:rgba(10,10,18,.85);backdrop-filter:blur(10px);padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-links a{margin-left:20px;color:#fff;text-decoration:none;opacity:.85}
+.nav-links a:hover{opacity:1;color:#b084ff}
 
-nav{position:sticky;top:0;background:rgba(10,10,18,0.85);backdrop-filter:blur(10px);padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.08);z-index:100;}
-.nav-links a{margin-left:22px;text-decoration:none;color:#fff;opacity:0.85;transition:0.3s;}
-.nav-links a:hover{opacity:1;color:#b084ff;}
+header{text-align:center;padding:90px 20px}
+header img{max-width:360px}
+.ip-box{margin-top:25px;display:inline-block;background:linear-gradient(135deg,#7a2cff,#b084ff);padding:15px 30px;border-radius:16px;cursor:pointer}
 
-header{text-align:center;padding:90px 20px 80px;}
-header img{max-width:360px;margin-bottom:25px;}
-header h1{font-size:3rem;margin-bottom:12px;}
-header p{max-width:720px;margin:auto;opacity:0.9;}
+section{max-width:1150px;margin:auto;padding:60px 20px}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-size:2.3rem}
 
-.ip-box{margin-top:30px;display:inline-block;background:linear-gradient(135deg,#7a2cff,#b084ff);padding:15px 30px;border-radius:16px;font-weight:600;cursor:pointer;box-shadow:0 12px 35px rgba(122,44,255,0.4);transition:0.3s;}
-.ip-box:hover{transform:scale(1.05);}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.card{background:rgba(255,255,255,.06);padding:30px;border-radius:20px;border:1px solid rgba(255,255,255,.08)}
+.card i{font-size:2.2rem;color:#b084ff;margin-bottom:10px}
 
-section{max-width:1150px;margin:auto;padding:60px 20px;}
-.section-title{text-align:center;margin-bottom:45px;}
-.section-title h2{font-size:2.4rem;}
+#status-box{background:rgba(0,0,0,.4);padding:24px;border-radius:16px;max-width:500px;margin:auto}
+.server-item{display:flex;justify-content:space-between}
+.server-name{font-family:Minecraft,sans-serif}
 
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
-.card{background:rgba(255,255,255,0.06);padding:34px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);transition:0.3s;}
-.card:hover{transform:translateY(-6px);}
-.card i{font-size:2.4rem;color:#b084ff;margin-bottom:15px;}
+.version-dropdown{margin-top:12px;background:rgba(255,255,255,.06);padding:10px;border-radius:12px;cursor:pointer}
+.version-list{max-height:0;overflow:hidden}
+.version-dropdown.active .version-list{max-height:300px}
 
-/* FAQ */
-.faq{max-width:850px;margin:auto;}
-.faq-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:16px;margin-bottom:18px;overflow:hidden;}
-.faq-question{padding:22px 26px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;}
-.faq-answer{padding:0 26px;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;opacity:0.9;}
-.faq-item.active .faq-answer{max-height:500px;padding:0 26px 24px;}
-.faq-item i{transition:transform 0.3s;}
-.faq-item.active i{transform:rotate(180deg);}
-.faq a{color:#b084ff;text-decoration:none;}
+.faq{max-width:850px;margin:auto}
+.faq-item{background:rgba(255,255,255,.06);border-radius:16px;margin-bottom:16px}
+.faq-question{padding:20px;cursor:pointer;display:flex;justify-content:space-between}
+.faq-answer{max-height:0;overflow:hidden;padding:0 20px}
+.faq-item.active .faq-answer{max-height:300px;padding-bottom:20px}
 
-/* Status */
-#status-box{background:rgba(0,0,0,0.4);padding:24px;border-radius:16px;text-align:center;max-width:500px;margin:30px auto;border:1px solid rgba(255,255,255,0.1);}
-.server-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px 20px;display:flex;justify-content:space-between;}
-.server-name{font-family:'Minecraft',sans-serif;font-size:1.2rem;}
+.changelog{max-width:850px;margin:auto}
+.changelog-item{background:rgba(255,255,255,.06);border-radius:16px;margin-bottom:16px}
+.changelog-header{padding:20px;display:flex;justify-content:space-between;cursor:pointer}
+.changelog-body{max-height:0;overflow:hidden;padding:0 20px}
+.changelog-item.active .changelog-body{max-height:300px;padding-bottom:20px}
 
-/* Version dropdown */
-.version-dropdown{background:rgba(255,255,255,0.06);border-radius:12px;padding:10px 14px;margin-top:12px;cursor:pointer;border:1px solid rgba(255,255,255,0.08);}
-.version-list{max-height:0;overflow:hidden;transition:0.3s;}
-.version-dropdown.active .version-list{max-height:300px;margin-top:8px;}
-.version-item{padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
-
-/* Changelog */
-.changelog{max-width:850px;margin:auto;}
-.changelog-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:16px;margin-bottom:16px;overflow:hidden;}
-.changelog-header{padding:20px 24px;display:flex;justify-content:space-between;cursor:pointer;font-weight:600;}
-.changelog-body{padding:0 24px;max-height:0;overflow:hidden;transition:0.35s;}
-.changelog-item.active .changelog-body{max-height:500px;padding:0 24px 22px;}
-.changelog-header i{transition:0.3s;}
-.changelog-item.active i{transform:rotate(180deg);}
-
-footer{text-align:center;padding:30px;background:#07070d;opacity:0.85;font-size:0.9rem;}
+footer{text-align:center;padding:30px;background:#07070d}
 </style>
 </head>
+
 <body>
 
 <nav>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#status">Status</a>
-    <a href="#faq">FAQ</a>
-    <a href="#changelog">Changelog</a>
-    <a href="https://discord.gg/VJAKqwhwK6" target="_blank">Discord</a>
-  </div>
+<div class="nav-links">
+<a href="#features">Features</a>
+<a href="#status">Status</a>
+<a href="#faq">FAQ</a>
+<a href="#changelog">Changelog</a>
+<a href="https://discord.gg/VJAKqwhwK6" target="_blank">Discord</a>
+</div>
 </nav>
 
 <header>
 <img src="https://dragonvile.gt.tc/banner.png">
 <h1>DragonVileMC</h1>
-<p>Competitive Minecraft <b>BedWars & PvP</b> server focused on combat and testing.</p>
+<p>Competitive BedWars & PvP Minecraft server</p>
 <div class="ip-box" onclick="copyIP()">IP: 170.64.251.196:9999</div>
 </header>
+
+<section id="features">
+<div class="section-title"><h2>What We Offer</h2></div>
+<div class="features">
+<div class="card"><i class="fa-solid fa-bed"></i><h3>BedWars</h3></div>
+<div class="card"><i class="fa-solid fa-swords"></i><h3>PvP Focus</h3></div>
+<div class="card"><i class="fa-solid fa-flask"></i><h3>Client Testing</h3></div>
+<div class="card"><i class="fa-solid fa-users"></i><h3>Community</h3></div>
+</div>
+</section>
+
+<section id="status">
+<div id="status-box">
+<div class="server-item">
+<div class="server-name">DragonVileMC</div>
+<div id="status-text">Checking...</div>
+</div>
+<p id="players-text"></p>
+<p id="version-text"></p>
+
+<div class="version-dropdown" onclick="this.classList.toggle('active')">
+Versions
+<div class="version-list">
+<div>1.8.9</div>
+<div>1.12.2</div>
+<div>1.16.5</div>
+<div>1.21.8</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="faq">
+<div class="section-title"><h2>FAQ</h2></div>
+<div class="faq">
+<div class="faq-item">
+<div class="faq-question">Which versions are supported? <i class="fa fa-chevron-down"></i></div>
+<div class="faq-answer">1.8.9 to latest</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What is DragonVileMC? <i class="fa fa-chevron-down"></i></div>
+<div class="faq-answer">PvP & BedWars focused testing server</div>
+</div>
+</div>
+</section>
 
 <section id="changelog">
 <div class="section-title"><h2>Website Changelog</h2></div>
 <div class="changelog">
 
 <div class="changelog-item">
-<div class="changelog-header">v1.3 <i class="fa-solid fa-chevron-down"></i></div>
+<div class="changelog-header">v1.3 <i class="fa fa-chevron-down"></i></div>
 <div class="changelog-body">
 <ul>
-<li>Expandable changelog system added</li>
-<li>Improved UI consistency and layout polish</li>
-<li>Minor responsiveness fixes</li>
+<li>Expandable changelog added</li>
+<li>UI polish</li>
 </ul>
 </div>
 </div>
 
 <div class="changelog-item">
-<div class="changelog-header">v1.2 <i class="fa-solid fa-chevron-down"></i></div>
+<div class="changelog-header">v1.2 <i class="fa fa-chevron-down"></i></div>
 <div class="changelog-body">
 <ul>
-<li>Navigation bar added</li>
-<li>Live server status integration</li>
-<li>FAQ dropdowns implemented</li>
-<li>Version selector added</li>
+<li>Status system</li>
+<li>FAQ dropdowns</li>
 </ul>
 </div>
 </div>
 
 <div class="changelog-item">
-<div class="changelog-header">v1.1 <i class="fa-solid fa-chevron-down"></i></div>
+<div class="changelog-header">v1.1 <i class="fa fa-chevron-down"></i></div>
 <div class="changelog-body">
 <ul>
-<li>Initial website release</li>
-<li>Basic layout and IP copy</li>
+<li>Initial site</li>
 </ul>
 </div>
 </div>
@@ -151,16 +172,26 @@ footer{text-align:center;padding:30px;background:#07070d;opacity:0.85;font-size:
 <script>
 function copyIP(){
 navigator.clipboard.writeText("170.64.251.196:9999");
-alert("Server IP copied!");
+alert("IP copied");
 }
 
 document.querySelectorAll('.faq-question').forEach(q=>{
-q.onclick=()=>q.parentElement.classList.toggle('active');
+q.onclick=()=>q.parentElement.classList.toggle('active')
+});
+document.querySelectorAll('.changelog-header').forEach(h=>{
+h.onclick=()=>h.parentElement.classList.toggle('active')
 });
 
-document.querySelectorAll('.changelog-header').forEach(h=>{
-h.onclick=()=>h.parentElement.classList.toggle('active');
-});
+async function fetchServerStatus(){
+const r=await fetch("https://api.mcsrvstat.us/3/170.64.251.196:9999");
+const d=await r.json();
+if(d.online){
+status-text.textContent="Online";
+players-text.textContent=`Players: ${d.players.online}/${d.players.max}`;
+version-text.textContent=`Version: ${d.version}`;
+}else status-text.textContent="Offline";
+}
+fetchServerStatus();
 </script>
 
 </body>
