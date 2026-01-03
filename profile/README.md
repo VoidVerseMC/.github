@@ -1,18 +1,18 @@
-# Hey 👋, welcome to DragonVileMC (DV)
+# Hey 👋, welcome to VoidVerse
 
 DragonVileMC is a competitive and fun Minecraft **BedWars & PvP** server built for both **Java & Bedrock** players.  
 We focus on fast-paced gameplay, fair competition, and an active, friendly community.
 
-- 🌐 Want to learn more about us? **Visit our website:** https://dragonvile.gt.tc/
-- 🎮 Join the server: `play.dragonvile.gt.tc`
+- 🌐 Want to learn more about us? **Visit our website:** http://vv.now.ct.ws/
+- 🎮 Join the server: ``
 - 🐛 Found a bug or issue? **Report it on Discord:** https://discord.gg/VJAKqwhwK6
 - 📢 Server updates or downtime? **Check announcements:** https://discord.gg/VJAKqwhwK6
 - 💬 Feeling social? **Join our Discord community:** https://discord.gg/VJAKqwhwK6
-- 📺 Watch gameplay & updates on **YouTube:** https://youtube.com/@dragonvile
+- 📺 Watch gameplay & updates on **YouTube:** https://www.youtube.com/channel/UCjslvak8DBaVpFPGCNynnXg
 
 ---
 
-## 🛏️⚔️ BedWars & PvP at DragonVileMC
+## 🛏️⚔️ BedWars & PvP at VoidVerse
 
 DragonVileMC offers:
 - Competitive **BedWars** with custom-balanced gameplay  
@@ -26,12 +26,12 @@ Whether you’re a casual player or a competitive grinder, DV is built for inten
 
 ## ❤️ Community-Driven Server
 
-DragonVileMC is powered by its community.  
+VoidVerseMC is powered by its community.  
 Player feedback, suggestions, and ideas help shape the future of the server—everyone is welcome to contribute and be heard.
 
 ---
 
-### © 2025–2026 DragonVileMC  
+### © 2025–2026 VoidVerse
 _Not affiliated with Mojang Studios._
 <!--
 
