@@ -2,1131 +2,386 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>VoidVerse | BedWars, Lifesteal & PvP Servers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoidVerse | Survival & Anarchy</title>
     
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="VoidVerse | BedWars, Lifesteal & PvP Servers">
-    <meta name="description" content="VoidVerse: A competitive Minecraft server network featuring BedWars, Lifesteal, PvP, live status monitoring, and client testing.">
-    
-    <!-- Open Graph / Discord -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://voidverse.now.ct.ws">
-    <meta property="og:title" content="VoidVerse | BedWars, Lifesteal & PvP Servers">
-    <meta property="og:description" content="Monitor live server status for multiple game modes. Competitive BedWars, intense Lifesteal, and skill-based PvP.">
-    <meta property="og:image" content="http://vv.now.ct.ws/banner-vv.png">
-    
-    <!-- Twitter/X -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="VoidVerse | BedWars, Lifesteal & PvP Servers">
-    <meta name="twitter:description" content="Monitor live server status for multiple game modes. Competitive BedWars, intense Lifesteal, and skill-based PvP.">
-    <meta name="twitter:image" content="http://vv.now.ct.ws/banner-vv.png">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/minecraft-3" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <!-- External Assets -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #b084ff;
-            --secondary-color: #7a2cff;
-            --dark-bg: #0a0a12;
-            --card-bg: rgba(255, 255, 255, 0.06);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --success-color: #4CAF50;
-            --error-color: #f44336;
-            --warning-color: #ff9800;
-            --lifesteal-color: #ff4444;
-            --bedwars-color: #44aaff;
+            --primary: #6366f1; /* Electric Indigo */
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --accent: #ef4444; 
+            --bg-dark: #050507;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        
-        body {
-            background: radial-gradient(circle at top, #1b0038, var(--dark-bg));
-            color: #fff;
-            line-height: 1.6;
-            min-height: 100vh;
+
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* Mouse Spotlight Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.12) 0%, transparent 45%);
+            z-index: -1;
+            pointer-events: none;
         }
-        
-        /* Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(10, 10, 18, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 12px 20px;
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-        }
-        
-        .nav-links a {
-            margin-left: 22px;
-            text-decoration: none;
-            color: #fff;
-            opacity: 0.85;
-            transition: 0.3s;
-        }
-        
-        .nav-links a:hover {
-            opacity: 1;
-            color: var(--primary-color);
-        }
-        
-        /* Header - Fixed Banner */
-        header {
-            text-align: center;
-            padding: 60px 20px 50px;
-        }
-        
-        .banner-container {
-            max-width: 600px;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            display: block;
-        }
-        
-        .banner-container img {
+
+        /* NAVIGATION */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            position: fixed;
             width: 100%;
-            height: auto;
-            display: block;
-            border: none;
-            outline: none;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 5, 7, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
         }
-        
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 12px;
-        }
-        
-        header p {
-            max-width: 720px;
-            margin: auto;
-            opacity: 0.9;
-        }
-        
-        .server-ips {
+
+        .brand {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 25px;
-        }
-        
-        .ip-box {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            padding: 15px 25px;
-            border-radius: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 12px 35px rgba(122, 44, 255, 0.4);
-            transition: 0.3s;
-            min-width: 220px;
-            text-align: center;
-        }
-        
-        .ip-box.lifesteal {
-            background: linear-gradient(135deg, #ff4444, #ff6b6b);
-            box-shadow: 0 12px 35px rgba(255, 68, 68, 0.4);
-        }
-        
-        .ip-box.bedwars {
-            background: linear-gradient(135deg, #44aaff, #66bbff);
-            box-shadow: 0 12px 35px rgba(68, 170, 255, 0.4);
-        }
-        
-        .ip-box:hover {
-            transform: translateY(-5px);
-        }
-        
-        .ip-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-bottom: 5px;
-            display: block;
-        }
-        
-        .ip-address {
-            font-size: 1.2rem;
-            display: block;
-        }
-        
-        .ip-note {
-            font-size: 0.8rem;
-            opacity: 0.8;
-            margin-top: 5px;
-            display: block;
-        }
-        
-        /* Sections */
-        section {
-            max-width: 1150px;
-            margin: auto;
-            padding: 60px 20px;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.4rem;
-        }
-        
-        /* Features - UPDATED FOR LIFESTEAL */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-        
-        .card {
-            background: var(--card-bg);
-            padding: 34px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            transition: 0.3s;
-            text-align: center;
-        }
-        
-        .card:hover {
-            transform: translateY(-6px);
-        }
-        
-        .card i {
-            font-size: 2.4rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .card.lifesteal i {
-            color: var(--lifesteal-color);
-        }
-        
-        .card.bedwars i {
-            color: var(--bedwars-color);
-        }
-        
-        .card h3 {
-            margin-bottom: 10px;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
             font-size: 1.4rem;
-        }
-        
-        .card p {
-            color: #aaa;
-            line-height: 1.6;
-        }
-        
-        /* FAQ Styling */
-        .faq {
-            max-width: 850px;
-            margin: auto;
-        }
-        
-        .faq-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            margin-bottom: 18px;
-            overflow: hidden;
-        }
-        
-        .faq-question {
-            padding: 22px 26px;
+            letter-spacing: -0.5px;
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
         }
-        
-        .faq-answer {
-            padding: 0 26px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease, padding 0.35s ease;
-            opacity: 0.9;
+
+        .brand i { color: var(--primary); font-size: 1.8rem; }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--text-main); }
+
+        .discord-btn {
+            background: var(--text-main);
+            color: var(--bg-dark) !important;
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: 0.3s;
         }
-        
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 26px 24px;
-        }
-        
-        .faq-item i {
-            transition: transform 0.3s;
-        }
-        
-        .faq-item.active i {
-            transform: rotate(180deg);
-        }
-        
-        .faq a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        .faq a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Status Section - Minecraft Style */
-        #status-box {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 24px;
-            border-radius: 16px;
-            text-align: center;
-            max-width: 650px;
-            margin: 30px auto;
-            border: 2px solid #555;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-        
-        .server-list {
-            margin-top: 20px;
-        }
-        
-        .server-item {
-            background: rgba(255, 255, 255, 0.06);
-            border: 2px solid #555;
-            border-radius: 8px;
-            padding: 14px 20px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(40, 40, 40, 0.8);
-            font-family: 'Minecraft', sans-serif;
-        }
-        
-        .server-info {
+        .discord-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at top, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
         }
-        
-        .server-name {
-            font-family: 'Minecraft', sans-serif;
-            font-size: 1.2rem;
-            color: #FFF;
-            text-shadow: 2px 2px 0 #000;
-        }
-        
-        .server-type {
-            font-size: 0.9rem;
-            color: #AAA;
-        }
-        
-        .server-type.lifesteal {
-            color: var(--lifesteal-color);
-        }
-        
-        .server-type.bedwars {
-            color: var(--bedwars-color);
-        }
-        
-        .status-indicator {
-            display: flex;
+
+        .status-badge {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            margin-bottom: 30px;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
         }
-        
-        .player-count {
-            color: #AAA;
-            font-size: 0.9rem;
-            margin-right: 10px;
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4CAF50;
+            animation: pulse 2s infinite;
         }
-        
-        /* Version Dropdown Minecraft Style */
-        .version-dropdown {
-            background: rgba(60, 60, 60, 0.9);
-            border: 2px solid #555;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-family: 'Minecraft', sans-serif;
-            color: #FFF;
-            text-shadow: 1px 1px 0 #000;
-            transition: all 0.2s;
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 7.5rem);
+            font-weight: 800;
+            line-height: 0.9;
+            margin-bottom: 25px;
+            background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -4px;
         }
-        
-        .version-dropdown:hover {
-            background: rgba(80, 80, 80, 0.9);
-            border-color: #777;
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-dim);
+            max-width: 650px;
+            margin-bottom: 45px;
         }
-        
-        .version-dropdown.active {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-        
-        .version-dropdown.active .version-list {
-            max-height: 400px;
-            padding: 10px 14px;
-            border: 2px solid #555;
-            border-top: none;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-            background: rgba(50, 50, 50, 0.95);
-        }
-        
-        .version-header {
-            padding: 10px 14px;
-            cursor: pointer;
-            user-select: none;
-        }
-        
-        .version-list {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            margin-top: 10px;
-        }
-        
-        .version-item {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            font-family: 'Minecraft', sans-serif;
-            color: #AAA;
-            transition: color 0.2s;
-        }
-        
-        .version-item:hover {
-            color: #FFF;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .version-item:last-child {
-            border-bottom: none;
-        }
-        
-        .version-item.current {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        
-        /* Minecraft-style text elements */
-        .minecraft-font {
-            font-family: 'Minecraft', sans-serif;
-        }
-        
-        .server-stats {
-            font-family: 'Minecraft', sans-serif;
-            margin: 15px 0;
-            color: #AAA;
-        }
-        
-        .last-checked {
-            font-family: 'Minecraft', sans-serif;
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 15px;
-        }
-        
-        /* Changelog Dropdown */
-        .changelog-dropdown {
-            max-width: 800px;
-            margin: auto;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
+
+        .btn-main {
+            background: var(--primary);
+            color: white;
+            padding: 20px 45px;
             border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        
-        .changelog-header {
-            padding: 22px 26px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+            border: none;
             cursor: pointer;
+            box-shadow: 0 15px 35px var(--primary-glow);
+            font-size: 1rem;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 45px var(--primary-glow);
+        }
+
+        /* FEATURES GRID */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 100px 10%;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 40px;
+            transition: 0.3s;
+        }
+
+        .feat-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .feat-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: block; }
+        .feat-card h3 { margin-bottom: 15px; font-weight: 700; font-size: 1.4rem; }
+        .feat-card p { color: var(--text-dim); font-size: 0.95rem; }
+
+        /* STATUS BOX */
+        .status-container {
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        .server-card {
+            max-width: 600px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.08);
-            transition: background 0.3s;
+            padding: 30px 40px;
         }
+
+        .server-info { text-align: left; }
+        .server-ip { font-family: monospace; color: var(--primary); font-size: 1.1rem; }
         
-        .changelog-header:hover {
-            background: rgba(255, 255, 255, 0.12);
-        }
-        
-        .changelog-content {
-            padding: 0 26px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease, padding 0.35s ease;
-            opacity: 0.9;
-        }
-        
-        .changelog-dropdown.active .changelog-content {
-            max-height: 800px;
-            padding: 0 26px 24px;
-        }
-        
-        .changelog-dropdown i {
-            transition: transform 0.3s;
-        }
-        
-        .changelog-dropdown.active i {
-            transform: rotate(180deg);
-        }
-        
-        /* Version changelog items */
-        .version-changelog {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .version-changelog:last-child {
-            margin-bottom: 0;
-        }
-        
-        .changelog-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        
-        .changelog-date {
-            color: #AAA;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-        
-        .changelog-features {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        .changelog-features li {
-            padding: 5px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-        
-        .changelog-features li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-        }
-        
-        /* Footer */
+        /* FOOTER */
         footer {
+            padding: 80px 10%;
             text-align: center;
-            padding: 30px 15px;
-            background: #07070d;
-            opacity: 0.85;
-            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            background: #050507;
         }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: #aaa;
-            text-decoration: none;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        .copyright {
-            color: #888;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        
-        /* Notification Styles */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 10000;
-            animation: slideIn 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            color: white;
-        }
-        
-        .notification.success {
-            background: rgba(76, 175, 80, 0.9);
-        }
-        
-        .notification.error {
-            background: rgba(244, 67, 54, 0.9);
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-        
-        /* Status dot animations */
-        .status-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-        }
-        
-        .status-dot.online {
-            background: var(--success-color);
-            box-shadow: 0 0 10px var(--success-color);
-            animation: pulse 2s infinite;
-        }
-        
-        .status-dot.offline {
-            background: var(--error-color);
-            animation: none;
-        }
-        
-        .status-dot.error {
-            background: var(--warning-color);
-            animation: pulse 1s infinite;
-        }
-        
+
+        .copyright { color: var(--text-dim); font-size: 0.9rem; margin-top: 20px; }
+
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
         }
-        
-        /* Server status summary */
-        .status-summary {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
+
+        /* Notifications */
+        .notif {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--primary); color: white;
+            padding: 15px 30px; border-radius: 12px;
+            font-weight: 700; z-index: 9999;
+            transform: translateY(200%); transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        
-        .summary-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            min-width: 150px;
+        .notif.show { transform: translateY(0); }
+
+        /* Loader */
+        .loader {
+            position: fixed; inset: 0; background: var(--bg-dark);
+            z-index: 99999; display: flex; align-items: center; justify-content: center;
+            transition: 1s ease;
         }
-        
-        .summary-count {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        
-        .summary-label {
-            font-size: 0.9rem;
-            color: #AAA;
-        }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .spinner { width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
+
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="notif" id="notif">IP Copied to Clipboard!</div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="brand">
+            <i class='bx bxs-ghost'></i>
+            <span>VOIDVERSE</span>
+        </div>
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#status">Status</a>
-            <a href="#faq">FAQ</a>
-            <a href="#changelog">Changelog</a>
-            <a href="https://www.youtube.com/channel/UCjslvak8DBaVpFPGCNynnXg" target="_blank">YouTube</a>
-            <a href="https://github.com/VoidVerseMC" target="_blank">GitHub</a>
-            <a href="https://discord.gg/VJAKqwhwK6" target="_blank">Discord</a>
+            <a href="https://discord.gg/VJAKqwhwK6" target="_blank" class="discord-btn">Discord</a>
         </div>
     </nav>
 
-    <!-- Header -->
-    <header>
-        <div class="banner-container">
-            <img src="http://vv.now.ct.ws/banner-vv.png" alt="VoidVerse Banner">
+    <!-- HERO -->
+    <section class="hero">
+        <div class="status-badge" data-aos="fade-down">
+            <div class="status-dot"></div> <span id="player-count-badge">Loading Players...</span>
         </div>
-        <h1>VoidVerse Network</h1>
-        <p>
-            A competitive Minecraft server network featuring <b>BedWars, Lifesteal, and PvP</b> with live monitoring.
+        <h1 data-aos="zoom-in" data-aos-duration="1200">VOIDVERSE</h1>
+        <p data-aos="fade-up" data-aos-delay="200">
+            Nepal's definitive Survival experience. Anarchy-inspired freedom with just enough rules to keep the blade sharp. Performance-tuned for the ultimate grind.
         </p>
-        <div class="server-ips">
-            <div class="ip-box" onclick="copyIP('170.64.251.196:9999', 'Main Server')">
-                <span class="ip-label">Main Server</span>
-                <span class="ip-address">170.64.251.196:9999</span>
-                <span class="ip-note">(Click to copy)</span>
-            </div>
-            <div class="ip-box lifesteal" onclick="copyIP('141.147.45.89:25885', 'Lifesteal Server')">
-                <span class="ip-label">Lifesteal Server</span>
-                <span class="ip-address">141.147.45.89:25885</span>
-                <span class="ip-note">(Click to copy)</span>
-            </div>
-            <div class="ip-box bedwars" onclick="copyIP('170.64.251.196:2648', 'BedWars Server')">
-                <span class="ip-label">BedWars Server</span>
-                <span class="ip-address">170.64.251.196:2648</span>
-                <span class="ip-note">(Click to copy)</span>
-            </div>
+        <div data-aos="fade-up" data-aos-delay="400">
+            <button onclick="copyIP()" class="btn-main">
+                <i class='bx bx-copy'></i> play.voidverse.com
+            </button>
         </div>
-    </header>
+    </section>
 
-    <!-- Features Section - UPDATED FOR LIFESTEAL -->
-    <section id="features">
-        <div class="section-title">
-            <h2>Game Modes</h2>
+    <!-- FEATURES -->
+    <section id="features" class="features">
+        <div class="feat-card glass-card" data-aos="fade-up">
+            <i class='bx bxs-skull'></i>
+            <h3>Anarchy Lite</h3>
+            <p>Minimal administrative interference. Griefing and raiding are part of the ecosystem. Trust no one, build everywhere.</p>
         </div>
-        <div class="features">
-            <div class="card bedwars">
-                <i class="fa-solid fa-bed"></i>
-                <h3>BedWars</h3>
-                <p>Competitive BedWars with fast queues, strategic gameplay, and team-based combat.</p>
+        <div class="feat-card glass-card" data-aos="fade-up" data-aos-delay="100">
+            <i class='bx bxs-zap'></i>
+            <h3>Extreme Performance</h3>
+            <p>Running on high-clock thread rippers to ensure 20 TPS even during massive raids or complex redstone machinery.</p>
+        </div>
+        <div class="feat-card glass-card" data-aos="fade-up" data-aos-delay="200">
+            <i class='bx bxs-user-voice'></i>
+            <h3>Nepal Community</h3>
+            <p>The largest dedicated Minecraft community in Nepal. Competitive, ruthless, and highly active.</p>
+        </div>
+    </section>
+
+    <!-- STATUS -->
+    <section id="status" class="status-container">
+        <div class="server-card glass-card" data-aos="fade-up">
+            <div class="server-info">
+                <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Main Survival</h4>
+                <div class="server-ip">170.64.251.196:9999</div>
             </div>
-            <div class="card lifesteal">
-                <i class="fa-solid fa-heart-crack"></i>
-                <h3>Lifesteal</h3>
-                <p>Intense Lifesteal gameplay where you steal hearts from opponents to survive longer.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-swords"></i>
-                <h3>PvP Arena</h3>
-                <p>Skill-based PvP designed for practice, client testing, and competitive duels.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-flask"></i>
-                <h3>Client Testing</h3>
-                <p>Used for testing clients like Aqua, Jet, and Apple Client across all game modes.</p>
+            <div style="text-align: right;">
+                <div id="status-text" style="font-weight: 800; color: #4CAF50;">ONLINE</div>
+                <div id="player-stat" style="color: var(--text-dim); font-size: 0.9rem;">0 / 0 Players</div>
             </div>
         </div>
     </section>
 
-    <!-- Server Status Section -->
-    <section id="status">
-        <div class="section-title">
-            <h2>Live Server Status</h2>
-        </div>
-        <div id="status-box">
-            <h3 class="minecraft-font">Network Status</h3>
-            <div class="status-summary">
-                <div class="summary-item">
-                    <div class="summary-count" id="online-count">0</div>
-                    <div class="summary-label">Online</div>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-count" id="total-players">0</div>
-                    <div class="summary-label">Players</div>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-count" id="server-count">3</div>
-                    <div class="summary-label">Servers</div>
-                </div>
-            </div>
-            
-            <div class="server-list">
-                <!-- Main Server -->
-                <div class="server-item" id="server-main">
-                    <div class="server-info">
-                        <div class="server-name">VoidVerse Main</div>
-                        <div class="server-type">PvP & Testing</div>
-                    </div>
-                    <div class="status-indicator">
-                        <span class="player-count" id="players-main">-/-</span>
-                        <span class="status-dot" id="status-main"></span>
-                        <span class="minecraft-font" id="text-main">Checking...</span>
-                    </div>
-                </div>
-                
-                <!-- Lifesteal Server -->
-                <div class="server-item" id="server-lifesteal">
-                    <div class="server-info">
-                        <div class="server-name">VoidVerse Lifesteal</div>
-                        <div class="server-type lifesteal">Lifesteal PvP</div>
-                    </div>
-                    <div class="status-indicator">
-                        <span class="player-count" id="players-lifesteal">-/-</span>
-                        <span class="status-dot" id="status-lifesteal"></span>
-                        <span class="minecraft-font" id="text-lifesteal">Checking...</span>
-                    </div>
-                </div>
-                
-                <!-- BedWars Server -->
-                <div class="server-item" id="server-bedwars">
-                    <div class="server-info">
-                        <div class="server-name">VoidVerse BedWars</div>
-                        <div class="server-type bedwars">BedWars</div>
-                    </div>
-                    <div class="status-indicator">
-                        <span class="player-count" id="players-bedwars">-/-</span>
-                        <span class="status-dot" id="status-bedwars"></span>
-                        <span class="minecraft-font" id="text-bedwars">Checking...</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Version Dropdown -->
-            <div class="version-dropdown">
-                <div class="version-header" onclick="toggleVersion(event)">
-                    <span id="version-label">▼ Supported Versions</span>
-                </div>
-                <div class="version-list">
-                    <div class="version-item">1.8.9 (Legacy)</div>
-                    <div class="version-item">1.12.2 (Classic)</div>
-                    <div class="version-item">1.16.5 (Nether Update)</div>
-                    <div class="version-item current">1.21.8 (Current Recommended)</div>
-                </div>
-            </div>
-            
-            <div class="last-checked">
-                Last checked: <span id="status-time">Never</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section - UPDATED FOR LIFESTEAL -->
-    <section id="faq">
-        <div class="section-title">
-            <h2>FAQ</h2>
-        </div>
-        <div class="faq">
-            <div class="faq-item">
-                <div class="faq-question">
-                    Which versions are supported? 
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    We support versions from <b>1.8.9</b> to the latest. Some features may vary per version.
-                    Recommended: <b>1.21.8</b> for best experience across all servers.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    What is the Lifesteal server about? 
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    The Lifesteal server features intense PvP where you steal hearts from opponents.
-                    Each kill gives you extra hearts, making you stronger. Die too much and you'll be eliminated!
-                    Perfect for hardcore PvP players.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    Which clients are supported for testing? 
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    All servers support client testing for:
-                    <br> • <a href="https://net.aquafrost.ct.ws" target="_blank">Aqua Client</a>
-                    <br> • <a href="https://jetclient.codeberg.page" target="_blank">Jet Client</a>
-                    <br> • <a href="https://appleclient.codeberg.page" target="_blank">Apple Client</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Changelog Section -->
-    <section id="changelog">
-        <div class="section-title">
-            <h2>Website Changelog</h2>
-        </div>
-        <div class="changelog-dropdown active">
-            <div class="changelog-header" onclick="toggleChangelog()">
-                <span>Click to View Version History</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="changelog-content">
-                <!-- Version 1.4 -->
-                <div class="version-changelog">
-                    <div class="changelog-title">Version 1.4 - Multi-Server Network</div>
-                    <div class="changelog-date">Current Release</div>
-                    <ul class="changelog-features">
-                        <li>Added support for 3 separate game servers: Main, Lifesteal, and BedWars</li>
-                        <li>Implemented live status monitoring for all servers simultaneously</li>
-                        <li>Added Lifesteal game mode with dedicated server and styling</li>
-                        <li>Created color-coded server IP boxes for easy identification</li>
-                        <li>Enhanced status panel with server type indicators and player counts</li>
-                        <li>Added network summary showing online servers and total players</li>
-                        <li>Updated FAQ section with Lifesteal information</li>
-                        <li>Improved visual hierarchy for multi-server interface</li>
-                        <li>Added individual copy functionality for each server IP</li>
-                    </ul>
-                </div>
-                
-                <!-- Version 1.3 -->
-                <div class="version-changelog">
-                    <div class="changelog-title">Version 1.3</div>
-                    <div class="changelog-date">Previous Release</div>
-                    <ul class="changelog-features">
-                        <li>Enhanced server status with animated status dots and visual indicators</li>
-                        <li>Added Discord-style online/offline status visual feedback</li>
-                        <li>Improved version selector with Minecraft-themed styling</li>
-                        <li>Redesigned server status to emulate in-game Minecraft server list</li>
-                        <li>Added professional notification system for user interactions</li>
-                        <li>Improved overall visual hierarchy and spacing</li>
-                        <li>Added CSS animations and transitions for better user experience</li>
-                        <li>Enhanced changelog section with detailed version cards</li>
-                        <li>Kept original "What We Offer" section layout intact</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="footer-links">
+        <i class='bx bxs-ghost' style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
+        <div class="nav-links" style="justify-content: center; margin-bottom: 30px;">
+            <a href="#">Home</a>
             <a href="#features">Features</a>
-            <a href="#status">Status</a>
-            <a href="#faq">FAQ</a>
-            <a href="#changelog">Changelog</a>
-            <a href="https://www.youtube.com/channel/UCjslvak8DBaVpFPGCNynnXg" target="_blank">
-                <i class="fab fa-youtube"></i> YouTube
-            </a>
-            <a href="https://github.com/VoidVerseMC" target="_blank">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://discord.gg/VJAKqwhwK6" target="_blank">
-                <i class="fab fa-discord"></i> Discord
-            </a>
+            <a href="https://github.com/VoidVerseMC">GitHub</a>
+            <a href="https://discord.gg/VJAKqwhwK6">Discord</a>
         </div>
-        <div class="copyright">
-            © 2025–2026 VoidVerse Network · All rights reserved.<br>
-            <strong>Join:</strong> 170.64.251.196:9999 · 
-        </div>
-        <div class="minecraft-disclaimer">
-            Not affiliated with Mojang Studios. Minecraft is a trademark of Mojang Studios.<br>
-            All Minecraft-related content is property of Mojang Studios and Microsoft.
-        </div>
+        <p class="copyright">
+            &copy; 2025-2026 VoidVerse Network. <br>
+            <span style="opacity: 0.5; font-size: 0.8rem;">Not an official Minecraft product. Not approved by or associated with Mojang.</span>
+        </p>
     </footer>
 
     <script>
-        // Server configuration
-        const servers = [
-            {
-                id: 'main',
-                name: 'Main Server',
-                ip: '170.64.251.196:9999',
-                displayName: 'VoidVerse Main',
-                type: 'PvP & Testing'
-            },
-            {
-                id: 'lifesteal',
-                name: 'Lifesteal Server',
-                ip: '141.147.45.89:25885',
-                displayName: 'VoidVerse Lifesteal',
-                type: 'Lifesteal PvP'
-            },
-            {
-                id: 'bedwars',
-                name: 'BedWars Server',
-                ip: '170.64.251.196:2648',
-                displayName: 'VoidVerse BedWars',
-                type: 'BedWars'
-            }
-        ];
+        // Initialize Animations
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic' });
 
-        // Copy IP to clipboard
-        function copyIP(ip, serverName) {
+        // Mouse Spotlight Tracking
+        document.addEventListener('mousemove', e => {
+            document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+            document.body.style.setProperty('--mouse-y', e.clientY + 'px');
+        });
+
+        // Copy IP Function
+        function copyIP() {
+            const ip = "170.64.251.196:9999";
             navigator.clipboard.writeText(ip);
-            showNotification(`${serverName} IP copied to clipboard!`, "success");
-        }
-        
-        // Show notification
-        function showNotification(message, type) {
-            // Remove existing notification
-            const existing = document.querySelector('.notification');
-            if (existing) existing.remove();
-            
-            // Create new notification
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-                <span>${message}</span>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Auto remove after 3 seconds
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
-        }
-        
-        // FAQ dropdown functionality
-        document.querySelectorAll('.faq-question').forEach(q => {
-            q.addEventListener('click', () => {
-                q.parentElement.classList.toggle('active');
-            });
-        });
-        
-        // Toggle changelog dropdown
-        function toggleChangelog() {
-            document.querySelector('.changelog-dropdown').classList.toggle('active');
-        }
-        
-        // Version dropdown functions
-        function toggleVersion(e) {
-            e.stopPropagation();
-            document.querySelector('.version-dropdown').classList.toggle('active');
+            const notif = document.getElementById('notif');
+            notif.classList.add('show');
+            setTimeout(() => notif.classList.remove('show'), 3000);
         }
 
-        document.querySelectorAll('.version-item').forEach(item => {
-            item.addEventListener('click', e => {
-                e.stopPropagation();
-
-                // clear old current
-                document.querySelectorAll('.version-item')
-                    .forEach(v => v.classList.remove('current'));
-
-                // set new current
-                item.classList.add('current');
-
-                // update label text
-                document.getElementById('version-label').textContent =
-                    `▼ ${item.textContent}`;
-
-                // close dropdown
-                document.querySelector('.version-dropdown')
-                    .classList.remove('active');
-
-                showNotification(`Selected version: ${item.textContent}`, "success");
-            });
-        });
-        
-        // Fetch server status for all servers
-        async function fetchServerStatus() {
-            let onlineCount = 0;
-            let totalPlayers = 0;
-            
-            for (const server of servers) {
-                await fetchSingleServerStatus(server);
-            }
-            
-            // Update summary
-            document.getElementById('online-count').textContent = onlineCount;
-            document.getElementById('total-players').textContent = totalPlayers;
-            
-            // Update time
-            const now = new Date().toLocaleTimeString();
-            document.getElementById('status-time').textContent = now;
-        }
-        
-        // Fetch status for a single server
-        async function fetchSingleServerStatus(server) {
-            const statusDot = document.getElementById(`status-${server.id}`);
-            const statusText = document.getElementById(`text-${server.id}`);
-            const playersText = document.getElementById(`players-${server.id}`);
-            const serverElement = document.getElementById(`server-${server.id}`);
-            
+        // Server Status API
+        async function updateStatus() {
+            const ip = "170.64.251.196:9999";
             try {
-                const response = await fetch(`https://api.mcsrvstat.us/3/${server.ip}`);
+                const response = await fetch(`https://api.mcsrvstat.us/3/${ip}`);
                 const data = await response.json();
                 
+                const badge = document.getElementById('player-count-badge');
+                const stat = document.getElementById('player-stat');
+                const text = document.getElementById('status-text');
+
                 if (data.online) {
-                    // Server is online
-                    statusDot.className = 'status-dot online';
-                    statusText.textContent = 'Online';
-                    const playersOnline = data.players.online ?? 0;
-                    const playersMax = data.players.max ?? "?";
-                    playersText.textContent = `${playersOnline}/${playersMax}`;
-                    
-                    // Update counters
-                    onlineCount++;
-                    totalPlayers += playersOnline;
-                    
-                    // Add success styling
-                    serverElement.style.borderColor = '#4CAF50';
-                    serverElement.style.background = 'rgba(76, 175, 80, 0.1)';
+                    const online = data.players.online || 0;
+                    const max = data.players.max || 100;
+                    badge.innerText = `${online} Players Online`;
+                    stat.innerText = `${online} / ${max} Players`;
+                    text.innerText = "ONLINE";
+                    text.style.color = "#4CAF50";
                 } else {
-                    // Server is offline
-                    statusDot.className = 'status-dot offline';
-                    statusText.textContent = 'Offline';
-                    playersText.textContent = "0/?";
-                    
-                    // Add error styling
-                    serverElement.style.borderColor = '#F44336';
-                    serverElement.style.background = 'rgba(244, 67, 54, 0.1)';
+                    badge.innerText = `Server Offline`;
+                    stat.innerText = `0 / 0 Players`;
+                    text.innerText = "OFFLINE";
+                    text.style.color = "#ef4444";
                 }
-            } catch (error) {
-                // Error fetching status
-                statusDot.className = 'status-dot error';
-                statusText.textContent = "Error";
-                playersText.textContent = "-/-";
-                
-                // Add warning styling
-                serverElement.style.borderColor = '#FF9800';
-                serverElement.style.background = 'rgba(255, 152, 0, 0.1)';
+            } catch (e) {
+                console.error("Status check failed");
             }
-            
-            // Update counters (these need to be accessible)
-            window.onlineCount = onlineCount;
-            window.totalPlayers = totalPlayers;
         }
-        
-        // Initialize counters
-        let onlineCount = 0;
-        let totalPlayers = 0;
-        
-        // Initial fetch and interval
-        fetchServerStatus();
-        setInterval(fetchServerStatus, 30000);
-        
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.version-dropdown')) {
-                document.querySelector('.version-dropdown').classList.remove('active');
-            }
-            if (!e.target.closest('.changelog-dropdown')) {
-                document.querySelector('.changelog-dropdown').classList.remove('active');
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Initialize changelog as open
-        document.querySelector('.changelog-dropdown').classList.add('active');
+
+        // Initial Load
+        window.onload = () => {
+            updateStatus();
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        };
+
+        // Update every 60 seconds
+        setInterval(updateStatus, 60000);
     </script>
 </body>
 </html>
