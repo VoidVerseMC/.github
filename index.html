@@ -16,7 +16,6 @@
         :root {
             --primary: #6366f1; /* Electric Indigo */
             --primary-glow: rgba(99, 102, 241, 0.4);
-            --accent: #ef4444; 
             --bg-dark: #050507;
             --card-bg: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
@@ -124,7 +123,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 10vw, 7.5rem);
+            font-size: clamp(3rem, 10vw, 7.5rem);
             font-weight: 800;
             line-height: 0.9;
             margin-bottom: 25px;
@@ -201,7 +200,7 @@
         }
 
         .server-info { text-align: left; }
-        .server-ip { font-family: monospace; color: var(--primary); font-size: 1.1rem; }
+        .server-ip { font-family: monospace; color: var(--primary); font-size: 1.1rem; font-weight: 700; }
         
         /* FOOTER */
         footer {
@@ -246,9 +245,9 @@
         <div class="spinner"></div>
     </div>
 
-    <div class="notif" id="notif">IP Copied to Clipboard!</div>
+    <div class="notif" id="notif">Domain Copied to Clipboard!</div>
 
-    <!-- NAVBAR -->
+    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="brand">
             <i class='bx bxs-ghost'></i>
@@ -261,47 +260,47 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="status-badge" data-aos="fade-down">
-            <div class="status-dot"></div> <span id="player-count-badge">Loading Players...</span>
+            <div class="status-dot"></div> <span id="player-count-badge">Loading Status...</span>
         </div>
         <h1 data-aos="zoom-in" data-aos-duration="1200">VOIDVERSE</h1>
         <p data-aos="fade-up" data-aos-delay="200">
-            Nepal's definitive Survival experience. Anarchy-inspired freedom with just enough rules to keep the blade sharp. Performance-tuned for the ultimate grind.
+            Survival without compromise. Anarchy-inspired freedom with just enough rules to keep the blade sharp. Performance-tuned for the ultimate competitive grind.
         </p>
         <div data-aos="fade-up" data-aos-delay="400">
             <button onclick="copyIP()" class="btn-main">
-                <i class='bx bx-copy'></i> play.voidverse.com
+                <i class='bx bx-copy'></i> mc.tyler.qzz.io
             </button>
         </div>
     </section>
 
-    <!-- FEATURES -->
+    <!-- FEATURES GRID -->
     <section id="features" class="features">
         <div class="feat-card glass-card" data-aos="fade-up">
-            <i class='bx bxs-skull'></i>
-            <h3>Anarchy Lite</h3>
-            <p>Minimal administrative interference. Griefing and raiding are part of the ecosystem. Trust no one, build everywhere.</p>
+            <i class='bx bxs-shield-x'></i>
+            <h3>Anarchy Spirit</h3>
+            <p>Experience true freedom. Griefing and raiding are core mechanics of our world. Build, betray, or conquer—you define the rules of engagement.</p>
         </div>
         <div class="feat-card glass-card" data-aos="fade-up" data-aos-delay="100">
-            <i class='bx bxs-zap'></i>
-            <h3>Extreme Performance</h3>
-            <p>Running on high-clock thread rippers to ensure 20 TPS even during massive raids or complex redstone machinery.</p>
+            <i class='bx bxs-bolt'></i>
+            <h3>High Performance</h3>
+            <p>Powered by high-frequency hardware and a custom-optimized network stack to ensure 20 TPS even during massive world events.</p>
         </div>
         <div class="feat-card glass-card" data-aos="fade-up" data-aos-delay="200">
-            <i class='bx bxs-user-voice'></i>
-            <h3>Nepal Community</h3>
-            <p>The largest dedicated Minecraft community in Nepal. Competitive, ruthless, and highly active.</p>
+            <i class='bx bxs-trophy'></i>
+            <h3>Competitive PvP</h3>
+            <p>A community of hardened survivalists. Whether you're a lone wolf or a clan leader, only the most skilled players survive the void.</p>
         </div>
     </section>
 
-    <!-- STATUS -->
+    <!-- STATUS SECTION -->
     <section id="status" class="status-container">
         <div class="server-card glass-card" data-aos="fade-up">
             <div class="server-info">
-                <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Main Survival</h4>
-                <div class="server-ip">170.64.251.196:9999</div>
+                <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Primary Server</h4>
+                <div class="server-ip">mc.tyler.qzz.io</div>
             </div>
             <div style="text-align: right;">
                 <div id="status-text" style="font-weight: 800; color: #4CAF50;">ONLINE</div>
@@ -310,8 +309,9 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
-        <i class='bx bxs-ghost' style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
+        <i class='bx bxs-ghost' style="font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;"></i>
         <div class="nav-links" style="justify-content: center; margin-bottom: 30px;">
             <a href="#">Home</a>
             <a href="#features">Features</a>
@@ -320,7 +320,7 @@
         </div>
         <p class="copyright">
             &copy; 2025-2026 VoidVerse Network. <br>
-            <span style="opacity: 0.5; font-size: 0.8rem;">Not an official Minecraft product. Not approved by or associated with Mojang.</span>
+            <span style="opacity: 0.5; font-size: 0.8rem;">Not an official Minecraft product. Not affiliated with Mojang Studios.</span>
         </p>
     </footer>
 
@@ -334,10 +334,10 @@
             document.body.style.setProperty('--mouse-y', e.clientY + 'px');
         });
 
-        // Copy IP Function
+        // Copy IP/Domain Function
         function copyIP() {
-            const ip = "170.64.251.196:9999";
-            navigator.clipboard.writeText(ip);
+            const domain = "mc.tyler.qzz.io";
+            navigator.clipboard.writeText(domain);
             const notif = document.getElementById('notif');
             notif.classList.add('show');
             setTimeout(() => notif.classList.remove('show'), 3000);
@@ -345,9 +345,9 @@
 
         // Server Status API
         async function updateStatus() {
-            const ip = "170.64.251.196:9999";
+            const domain = "mc.tyler.qzz.io";
             try {
-                const response = await fetch(`https://api.mcsrvstat.us/3/${ip}`);
+                const response = await fetch(`https://api.mcsrvstat.us/3/${domain}`);
                 const data = await response.json();
                 
                 const badge = document.getElementById('player-count-badge');
@@ -380,7 +380,7 @@
             }, 1000);
         };
 
-        // Update every 60 seconds
+        // Update status every 60 seconds
         setInterval(updateStatus, 60000);
     </script>
 </body>
